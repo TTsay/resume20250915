@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume – Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #f8fafc;        /* slate-50 */
+      --card: #ffffff;      /* white */
+      --text: #0f172a;      /* slate-900 */
+      --muted: #475569;     /* slate-600 */
+      --accent: #2563eb;    /* blue-600 */
+      --border: #e2e8f0;    /* slate-200 */
+    }
+    *{ box-sizing: border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0; font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text); background: var(--bg);
+      line-height: 1.6;
+    }
+    .container{
+      max-width: 1000px; margin: 32px auto; padding: 0 16px;
+    }
+    .resume{
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+      box-shadow: 0 8px 24px rgba(2, 6, 23, 0.08);
+    }
+    .header{
+      display:flex; flex-wrap:wrap; gap: 16px; align-items:center; justify-content:space-between;
+      padding: 28px 28px 16px 28px; border-bottom:1px solid var(--border);
+    }
+    .id{
+      display:flex; gap:16px; align-items:center;
+    }
+    .avatar{
+      width:72px; height:72px; border-radius: 16px; background:#e2e8f0; display:flex; align-items:center; justify-content:center; font-weight:700; color:#334155;
+    }
+    h1{ font-size: 28px; line-height: 1.2; margin:0; }
+    .role{ color: var(--muted); font-weight:500; }
+    .contact{
+      display:flex; flex-wrap:wrap; gap: 12px; align-items:center; color: var(--muted);
+      font-size: 14px;
+    }
+    .contact a{ color: var(--muted); text-decoration: none; border-bottom: 1px dotted #cbd5e1; }
+    .toolbar{ padding: 0 28px 20px 28px; display:flex; gap:12px; }
+    .btn{
+      appearance:none; border:none; background: var(--text); color:white; padding:10px 14px; border-radius: 12px; font-weight:600; cursor:pointer;
+    }
+    .btn.secondary{ background: transparent; color: var(--accent); border:1px solid var(--accent); }
+
+    .grid{
+      display:grid; grid-template-columns: 1fr; gap: 0; min-height: 100%;
+    }
+    @media (min-width: 900px){
+      .grid{ grid-template-columns: 320px 1fr; }
+      .aside{ border-right:1px solid var(--border); }
+    }
+
+    .section{ padding: 24px 28px; }
+    .section h2{ font-size: 16px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 12px 0; }
+    .badge{
+      display:inline-block; padding: 6px 10px; border-radius: 999px; border:1px solid var(--border); background:#f8fafc; margin: 6px 8px 0 0; font-size:13px;
+    }
+    .item{ margin-bottom: 16px; }
+    .item h3{ margin: 0 0 4px 0; font-size: 16px; }
+    .item .meta{ color: var(--muted); font-size: 14px; }
+    .item ul{ margin: 8px 0 0 20px; }
+    .item ul li{ margin: 6px 0; }
+
+    .pill{ background: #eef2ff; color:#4338ca; padding:2px 8px; border-radius: 999px; font-size: 12px; font-weight:600; }
+
+    /* Print styles */
+    @media print{
+      body{ background: white; }
+      .container{ margin:0; padding:0; }
+      .resume{ border:none; box-shadow:none; border-radius:0; }
+      .toolbar{ display:none; }
+      a[href]::after{ content: " (" attr(href) ")"; font-size: 11px; color:#64748b; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <article class="resume" aria-label="Resume">
+      <header class="header">
+        <div class="id">
+          <!-- Replace initials or the entire avatar with an <img src="img/yourphoto.jpg"> -->
+          <div class="avatar" aria-hidden="true">YN</div>
+          <div>
+            <h1>Your Name</h1>
+            <div class="role">Job Title / Specialization</div>
+          </div>
+        </div>
+        <div class="contact">
+          <span>📍 City, Country</span>
+          <span>•</span>
+          <a href="mailto:you@example.com">you@example.com</a>
+          <span>•</span>
+          <a href="tel:+1234567890">+1 234 567 890</a>
+          <span>•</span>
+          <a href="https://linkedin.com/in/your-handle" target="_blank" rel="noreferrer">LinkedIn</a>
+          <span>•</span>
+          <a href="https://github.com/your-handle" target="_blank" rel="noreferrer">GitHub</a>
+          
+        </div>
+      </header>
+
+      <div class="toolbar">
+        <button class="btn" onclick="window.print()">Download / Print PDF</button>
+        <button class="btn secondary" onclick="toggleCompact()">Toggle Compact</button>
+      </div>
+
+      <div class="grid">
+        <!-- Left column -->
+        <aside class="aside">
+          <section class="section">
+            <h2>Profile</h2>
+            <p>
+              Concise 2–3 sentence summary highlighting your core strengths, years of experience, domains, and the impact you deliver. Example: Front‑end developer with 5+ years building accessible, high‑performance web apps; specialized in React and TypeScript with a track record of shipping user‑loved features.
+            </p>
+          </section>
+
+          <section class="section">
+            <h2>Skills</h2>
+            <div>
+              <span class="badge">HTML5</span>
+              <span class="badge">CSS3 / Sass</span>
+              <span class="badge">JavaScript / TypeScript</span>
+              <span class="badge">React</span>
+              <span class="badge">Node.js</span>
+              <span class="badge">REST / GraphQL</span>
+              <span class="badge">Git / GitHub</span>
+              <span class="badge">Unit Testing</span>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Certifications</h2>
+            <div class="item">
+              <h3>Certified Web Professional</h3>
+              <div class="meta">WebCert Institute • 2023</div>
+            </div>
+            <div class="item">
+              <h3>Google Analytics Individual Qualification</h3>
+              <div class="meta">Google • 2022</div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Languages</h2>
+            <div class="item"><strong>English</strong> — Native</div>
+            <div class="item"><strong>Mandarin</strong> — Professional</div>
+          </section>
+
+          <section class="section">
+            <h2>Interests</h2>
+            <div>🏃‍♂️ Running • ☕ Coffee • 🎮 Games • 📷 Photography</div>
+          </section>
+        </aside>
+
+        <!-- Right column -->
+        <main>
+          <section class="section">
+            <h2>Experience</h2>
+
+            <div class="item">
+              <h3>Senior Front‑End Engineer <span class="pill">Full‑time</span></h3>
+              <div class="meta">Acme Corp • San Francisco, CA • 2022 – Present</div>
+              <ul>
+                <li>Led the redesign of the customer dashboard (React + TypeScript), improving task completion time by <strong>28%</strong>.</li>
+                <li>Introduced a shared component library and accessibility guidelines, reducing UI defects by <strong>40%</strong>.</li>
+                <li>Mentored 4 developers; established CI checks for performance budgets and a11y.</li>
+              </ul>
+            </div>
+
+            <div class="item">
+              <h3>Front‑End Engineer</h3>
+              <div class="meta">StartupXYZ • Remote • 2020 – 2022</div>
+              <ul>
+                <li>Built a real‑time analytics console using Next.js and WebSockets; brought page TTI below <strong>1.5s</strong>.</li>
+                <li>Collaborated with designers to add dark mode and theming; boosted retention by <strong>12%</strong>.</li>
+              </ul>
+            </div>
+
+            <div class="item">
+              <h3>Web Developer (Intern)</h3>
+              <div class="meta">Bright Agency • Taipei • 2019 – 2020</div>
+              <ul>
+                <li>Prototyped marketing microsites and A/B tests; improved CTR by <strong>9%</strong>.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Projects</h2>
+            <div class="item">
+              <h3>Open‑Source UI Kit</h3>
+              <div class="meta"><a href="#">github.com/your-handle/ui-kit</a> • TypeScript, Storybook</div>
+              <ul>
+                <li>Reusable, accessible components with 2k+ weekly downloads.</li>
+                <li>Set up visual regression tests and tokens for theming.</li>
+              </ul>
+            </div>
+            <div class="item">
+              <h3>Personal Portfolio</h3>
+              <div class="meta"><a href="#">yourname.dev</a> • Next.js, MDX</div>
+              <ul>
+                <li>Showcases case studies and writing; Lighthouse 100/100/100/100.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Education</h2>
+            <div class="item">
+              <h3>B.S. in Computer Science</h3>
+              <div class="meta">Asia University • Taichung • 2016 – 2020</div>
+              <ul>
+                <li>Graduated with Honors; Chair of Coding Club.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Awards</h2>
+            <div class="item">
+              <h3>Winner – Hackathon 2023</h3>
+              <div class="meta">Best UX Solution among 120+ teams.</div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function toggleCompact(){
+      document.querySelectorAll('.section').forEach(s => s.style.padding = s.style.padding ? '' : '16px 20px');
+      document.querySelector('.header').style.padding = document.querySelector('.header').style.padding ? '' : '20px 20px 10px 20px';
+      document.querySelector('.toolbar').style.padding = document.querySelector('.toolbar').style.padding ? '' : '0 20px 14px 20px';
+    }
+  </script>
+</body>
+</html>
